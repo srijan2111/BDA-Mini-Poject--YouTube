@@ -1,0 +1,333 @@
+Microsoft Windows [Version 10.0.19041.1052]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\WINDOWS\system32>cqlsh
+
+WARNING: console codepage must be set to cp65001 to support utf-8 encoding on Windows platforms.
+If you experience encoding problems, change your console codepage with 'chcp 65001' before starting cqlsh.
+
+Connected to Test Cluster at 127.0.0.1:9042.
+[cqlsh 5.0.1 | Cassandra 3.11.4 | CQL spec 3.4.4 | Native protocol v4]
+Use HELP for help.
+WARNING: pyreadline dependency missing.  Install to enable tab completion.
+
+cqlsh> CREATE KEYSPACE trial WITH replication = {'class':'SimpleStrategy', 'replication_factor' : 3};
+
+cqlsh> SELECT * FROM system_schema.keyspaces;
+
+ keyspace_name      | durable_writes | replication
+--------------------+----------------+-------------------------------------------------------------------------------------
+        system_auth |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '1'}
+      system_schema |           True |                             {'class': 'org.apache.cassandra.locator.LocalStrategy'}
+ system_distributed |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '3'}
+             system |           True |                             {'class': 'org.apache.cassandra.locator.LocalStrategy'}
+      system_traces |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '2'}
+              trial |           True | {'class': 'org.apache.cassandra.locator.SimpleStrategy', 'replication_factor': '3'}
+
+(7 rows)
+
+cqlsh> use trial;
+cqlsh:trial> CREATE TABLE trial.trial_name (
+         ... title text,
+         ... videoId text PRIMARY KEY,
+         ... categoryId int,
+         ... category text,
+         ... duration text,
+         ... viewCount bigint,
+         ... commentCount bigint,
+         ... channelId text,
+         ... likeCount bigint,
+         ... dislikeCount bigint,
+         ... language text,
+         ... publishedAt text);
+
+cqlsh:trial> COPY trial.trial_name (title,videoId,categoryId,category,duration,viewCount,commentCount,channelId,likeCount,dislikeCount,language,publishedAt) FROM 'C:\Users\gupta\Downloads\data.csv' WITH HEADER=true;
+Using 7 child processes
+
+
+Starting copy of trial.trial_name with columns [title, videoid, categoryid, category, duration, viewcount, commentcount, channelid, likecount, dislikecount, language, publishedat].
+PPProcess ImportProcess-2:e:    7102 rows/s; Avg. rate:    3631 rows/s
+rocess ImportProcess-1:
+rocess ImportProcess-3:
+TTPPTraceback (most recent call last):
+PProcess ImportProcess-4:
+raceback (most recent call last):
+raceback (most recent call last):
+rocess ImportProcess-5:
+rocess ImportProcess-7:
+ rocess ImportProcess-6:
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+  TTTT  File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+raceback (most recent call last):
+raceback (most recent call last):
+raceback (most recent call last):
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+raceback (most recent call last):
+   self.run()
+          self.run()
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2328, in run
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+   self.run()
+ File "C:\Python27\lib\multiprocessing\process.py", line 267, in _bootstrap
+   File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2328, in run
+      self.run()
+    self.run()
+   self.run()
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2328, in run
+    self.run()
+   File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2328, in run
+  File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2328, in run
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2328, in run
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2328, in run
+    self.close()
+     self.close()
+   File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2332, in close
+     self.close()
+  File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2332, in close
+     self._session.cluster.shutdown()
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2332, in close
+      self.close()
+    self._session.cluster.shutdown()
+   self._session.cluster.shutdown()
+   self.close()
+   self.close()
+   self.close()
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+       File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2332, in close
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2332, in close
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2332, in close
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\pylib\cqlshlib\copyutil.py", line 2332, in close
+         self._session.cluster.shutdown()
+   self.control_connection.shutdown()
+   self._session.cluster.shutdown()
+   self._session.cluster.shutdown()
+   self.control_connection.shutdown()
+   self._session.cluster.shutdown()
+    File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+     self.control_connection.shutdown()
+    File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+  File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 1259, in shutdown
+   self._connection.close()
+  File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+    self._connection.close()
+   File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+   self._connection.close()
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+   File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+   AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+     AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+  File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+    AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+     cls._loop.add_timer(timer)
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+  A       self.control_connection.shutdown()
+   self.control_connection.shutdown()
+ttributeError: 'NoneType' object has no attribute 'add_timer'
+   self.control_connection.shutdown()
+   cls._loop.add_timer(timer)
+   self.control_connection.shutdown()
+   cls._loop.add_timer(timer)
+  AAttributeError: 'NoneType' object has no attribute 'add_timer'
+ttributeError: 'NoneType' object has no attribute 'add_timer'
+  File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+  File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+   File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\cluster.py", line 2850, in shutdown
+    self._connection.close()
+   self._connection.close()
+    self._connection.close()
+     self._connection.close()
+   File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 373, in close
+      AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+   AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+   AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+     File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+     cls._loop.add_timer(timer)
+    cls._loop.add_timer(timer)
+   AsyncoreConnection.create_timer(0, partial(asyncore.dispatcher.close, self))
+A A   cls._loop.add_timer(timer)
+ttributeError: 'NoneType' object has no attribute 'add_timer'
+ File "D:\apache-cassandra-3.11.4\apache-cassandra-3.11.4\bin\..\lib\cassandra-driver-internal-only-3.11.0-bb96859b.zip\cassandra-driver-3.11.0-bb96859b\cassandra\io\asyncorereactor.py", line 335, in create_timer
+ttributeError: 'NoneType' object has no attribute 'add_timer'
+A ttributeError: 'NoneType' object has no attribute 'add_timer'
+   cls._loop.add_timer(timer)
+AttributeError: 'NoneType' object has no attribute 'add_timer'
+Processed: 22527 rows; Rate:    3551 rows/s; Avg. rate:    3511 rows/s
+22527 rows imported from 1 files in 6.417 seconds (0 skipped).
+
+
+
+cqlsh:trial> select * from trial.trial_name;
+
+ videoid     | category             | categoryid | channelid                | commentcount | dislikecount | duration   | language | likecount | publishedat          | title                                                                                                                                 | viewcount
+-------------+----------------------+------------+--------------------------+--------------+--------------+------------+----------+-----------+----------------------+---------------------------------------------------------------------------------------------------------------------------------------+-----------
+ 4sRefGQPxkQ |      News & Politics |         25 | UC4oQAvXFuNlKivYjUynQKTA |           63 |           16 |    PT3M52S |   es-419 |        73 | 2021-05-12T20:45:15Z |                                                       Duque viajar├í nuevamente a Cali para reunirse con los j├│venes | Semana Noticias |      3611
+ WkQBtOtdwU4 |      News & Politics |         25 | UChDKyKQ59fYz3JO2fl0Z6sg |           36 |            2 |      PT47S |     null |       214 | 2021-05-25T16:00:12Z |                                                                     High School Runner With Cancer Crosses Finish Line With Teammates |      7362
+ ujP9ZXGLuQM |                Music |         10 | UCgcsRIFVt2xIF180uKdOT4A |         1441 |          848 |    PT3M31S |     null |     22061 | 2017-11-04T03:00:02Z |                                                                                                                     Chano! - Para Vos |   2724573
+ h75JpMHJnJ8 |                Music |         10 | UCYXIviXPAaaaU_AOotpXTAw |            0 |           23 |    PT3M16S |     null |      1196 | 2021-06-04T04:06:57Z |                                                                                                                            Still Hood |     78129
+ XDgQR949Zn0 |      News & Politics |         25 | UC5wKpLWxAZBZrunls3mzwEw |            9 |            0 |    PT1M28S |     null |        41 | 2021-05-27T02:10:58Z |                                                                           α╣üα╕₧α╕ùα╕óα╣îα╕êα╕╕α╕¼α╕▓α╕» α╣üα╕êα╕çα╕üα╕úα╕░α╣üα╕¬α╕«α╕┤α╕ò α╕₧α╣êα╕Öα╕äα╕¡α╕öα╣ëα╕ºα╕ó α╣éα╕₧α╕ºα╕┤α╣éα╕öα╕Ö α╣äα╕¡α╣éα╕¡α╕öα╕╡α╕Ö α╣äα╕íα╣êα╕íα╕╡α╕£α╕Ñα╕èα╣êα╕ºα╕óα╕¢α╣ëα╕¡α╕çα╕üα╕▒α╕Öα╣éα╕äα╕ºα╕┤α╕ö |      8163
+ eYgg6Fhbem0 |      News & Politics |         25 | UCwqusr8YDwM-3mEYTDeJHzw |           44 |         null |      PT48S |       en |      null | 2021-06-12T03:13:14Z |                                         Telangana: Congress Stages Bizzare Protest Over Fuel Prices Throws Bike In Hussain Sagar Lake |      2163
+ -6WpTjZysjo |      News & Politics |         25 | UCeJWZgSMlzqYEDytDnvzHnw |            0 |         null |    PT2M26S |       en |      null | 2021-05-26T09:23:14Z |                                          Cyclone Tauktae : Heavy losses to Lemon and Custard apple farmers of Virpur Rajkot | TV9News |      1396
+ WMweEpGlu_U |                Music |         10 | UC9vrvNSL3xcWGSkV86REBSg |      7228764 |       230291 |     PT3M3S |       ko |  17077364 | 2021-05-21T03:46:13Z |                                                                                                   BTS (δ░⌐φâä∞åîδàäδï¿) Butter Official MV | 341473822
+ qHqA5ypvv3g |        Entertainment |         24 | UCtBu8Wb2BUoduUXJS9Uss7Q |            5 |           31 |   PT16M16S |     null |       838 | 2021-05-30T15:00:19Z |                                                                                                    α╣Çα╕₧α╕úα╕çα╕Ñα╕▒α╕Üα╣üα╕Ñ EP.40 1/4 | α╕òα╕¡α╕Öα╕êα╕Ü | α╕èα╣êα╕¡α╕ç 8 |     73972
+ AiJdGU17rUE |        Entertainment |         24 | UC7vRgYRMzpudUE0JIwhaoPg |            0 |            0 |   PT38M22S |     null |         1 | 2021-02-11T13:58:52Z |                                                             KHTOnline 11/02/2021 Approaching Sound Design for Plays with Nicola Chang |        32
+ qJWS3faAlgk |                Music |         10 | UC9vrvNSL3xcWGSkV86REBSg |         1748 |          358 |    PT4M18S |       en |     81318 | 2017-11-30T23:10:26Z |                                                                    BTS (δ░⌐φâä∞åîδàäδï¿) ΓÇô HIP HOP LOVER  (Color Coded Han|Rom|Eng Lyrics) |   2492651
+ nYeONwvvrrg |               Gaming |         20 | UCIdFoP9qNlROZ6jVLFx9vhw |         8081 |          159 |   PT12M17S |     null |     13858 | 2021-03-16T08:15:17Z |                                                             T├£M PETLER DE─₧─░┼₧T─░ !? ADOPT ME PLAYFULL PET UPDATE !! ( Roblox Adopt Me ) |     87743
+ AJnMlOOprvI |      News & Politics |         25 | UCwqusr8YDwM-3mEYTDeJHzw |           37 |         null |   PT14M29S |       en |      null | 2021-06-12T08:35:43Z |                                                  BJPs Sambit Patra Slams Digvijaya Singh On Clubhouse Row; Calls It A Part Of Toolkit |      1140
+ QaccGzslNaU |      News & Politics |         25 | UC5wKpLWxAZBZrunls3mzwEw |           36 |           31 |   PT14M47S |     null |       512 | 2021-05-14T00:16:42Z |                                                                      α╣Çα╕úα╕╖α╣êα╕¡α╕çα╣Çα╕Ñα╣êα╕▓α╕½α╕Öα╣ëα╕▓α╕½α╕Öα╕╢α╣êα╕ç 14 α╕₧.α╕ä.64 α╣Çα╕¢α╕┤α╕öα╕òα╣ëα╕Öα╕òα╕¡α╕äα╕Ñα╕▒α╕¬α╣Çα╕òα╕¡α╕úα╣îα╣Çα╕úα╕╖α╕¡α╕Öα╕êα╕│-α╕¡α╕ó.α╕éα╕╢α╣ëα╕Öα╕ùα╕░α╣Çα╕Üα╕╡α╕óα╕Öα╣éα╕íα╣Çα╕öα╕¡α╕úα╣îα╕Öα╕▓ |     50913
+ ZnOCQ7k-ZgI |                Music |         10 | UCzCedBCSSltI1TFd3bKyN6g |        21657 |         1025 |      PT27S |     null |    309110 | 2021-06-05T15:00:26Z |                                                                              EXO ∞ùæ∞åî Dont fight the feeling Character Clip #CHANYEOL |   1237877
+ bL3W4Zrqmtw |                Music |         10 | UCdopecNiaAWuw1gabUMSVVA |            8 |            5 |    PT1M59S |     null |       263 | 2021-05-29T18:12:56Z |                                                                                                       Dale Q Va - Confesi├│n (En Vivo) |     11260
+ FEo4_S6pWaQ |      News & Politics |         25 | UCaXkIU1QidjPwiAYu6GcHjg |          121 |           18 |    PT5M35S |     null |       273 | 2021-06-05T20:34:09Z |                                                                                       Who Got Next? One-on-One with Dr. Jason Johnson |      9817
+ 7l7msh3xWbM |      News & Politics |         25 | UC4oQAvXFuNlKivYjUynQKTA |           18 |           42 |    PT45M6S |   es-419 |        56 | 2021-05-30T23:52:27Z |                                                 Juanes presenta su nuevo ├ílbum y se refiere a la crisis en Colombia | Semana Noticias |      3695
+ en7TNVYIWRg |      News & Politics |         25 | UCeJWZgSMlzqYEDytDnvzHnw |            1 |         null |    PT1M35S |       en |      null | 2021-05-16T09:36:24Z |                                                        Cyclone Tauktae: 11 villages on alert in Morbi 2 NDRF teams deployed | TV9News |      2681
+ DwJkGIkr7-M |               Sports |         17 | UCVhibwHk4WKw4leUt6JfRLg |          180 |           11 |      PT54S |     null |       111 | 2021-06-07T00:03:14Z |                                                                                    Paul Byron Left Bloody As Jets Find The Scoreboard |     24981
+ 8PAesIDh_WQ |        Entertainment |         24 | UC58J5mgyNYw1IS947I73qMw |          225 |           35 |   PT26M21S |    de-DE |      1323 | 2021-05-20T22:00:06Z |                                              Vorhang auf f├╝r die erste Princess Charming ≡ƒæ╕ | Jetzt schon die ersten 25 Minuten sehen |     92230
+ EqP8ucFcTwM |     Film & Animation |          1 | UC3UUwfyntghfisq02q5v2tw |           14 |           10 |    PT2M36S |       en |       396 | 2021-06-08T13:00:07Z |                                             TrailerΓû╢ EP 15 - You start the war and you should know what youll pay for it?! | Mr. Ling |     45779
+ XEJLuJyxLDE |                Music |         10 | UCwgX_dLqGYna_7Fm8ecf4Ng |        78158 |        82246 |    PT2M45S |     null |   2065944 | 2020-06-25T16:00:14Z |                                                                                  Doja Cat - Like That (Official Video) ft. Gucci Mane | 154630205
+ Xz9N45-zPXY |      News & Politics |         25 | UChDKyKQ59fYz3JO2fl0Z6sg |          116 |           15 |      PT53S |     null |       283 | 2021-06-05T14:38:43Z |                                                                     Delta Flight Diverted After Passenger Tries To Breach The Cockpit |     43365
+ GKuJKq6w0EY |      News & Politics |         25 | UCPXTXMecYqnRKNdqdVOGSFg |            3 |         null |    PT2M26S |       en |      null | 2021-06-01T14:02:23Z |                                                                                                           α░àα░«α░▓α░╛α░¬α▒üα░░α░éα░▓α▒ï α░åα░¿α░éα░ªα░»α▒ìα░» α░«α░éα░ªα▒ü! - TV9 |      4365
+ zwW85Wa8Q_I |       People & Blogs |         22 | UCa0Nja57-8BPQn3C2e-qhhw |          203 |        32756 |    PT2M43S |     null |    163698 | 2017-10-12T20:35:09Z |                                                                                                            FORT├âO DO CABEL├âO | Sans├úo |  27591536
+ AhxqnohkBF8 |               Sports |         17 | UClhp9g6TPiqCTOlcw0ROfNg |            4 |         null |    PT3M27S |       en |      null | 2021-06-07T12:49:25Z |                                                Ons Jabeur v Coco Gauff | 2021 Roland Garros - Round 4 Highlights | Tennis | Eurosport |      7127
+ huNygORtdFo |        Entertainment |         24 | UC58J5mgyNYw1IS947I73qMw |           13 |            4 |     PT9M3S |     null |       290 | 2021-05-20T11:30:05Z |                                                                 Princess Charming: Das ist unsere Princess Irina ≡ƒææ | Das Stream Team |     24194
+ pxFBsvEni-k |        Entertainment |         24 | UCSblay-r16Uf-N-MIJ6X3Gw |          396 |          319 |   PT10M57S |     null |     17273 | 2021-05-11T19:15:02Z |                                                                                                 ABANDONO a MI NOVIA en el DESIERTO... |    225644
+ kZS5CWh15PY |            Education |         27 | UCSJCH8mrXYuTqvL5xvAlbxQ |          227 |            0 |    PT4M57S |     null |       130 | 2019-08-15T04:41:46Z |                                                                         KORBANIR  EID SPECIAL NIHARI RECIPE / αªêαªª αª╕αºìαª¬αºçαª╕αª╛αª▓ αª¿αª┐αª╣αª╛αª░αª┐ αª░αºçαª╕αª┐αª¬αª┐ |      1249
+ OjS5IhODmR0 |                Music |         10 | UCnKA7P3zP5bPFADe2lxnWFQ |            1 |            0 |    PT3M59S |     null |         3 | 2016-02-28T02:46:40Z |                                                                           Il burbero di buon cuore: Act I: Valerio partite (Angelica) |       328
+ OVgp6-pHyMY |                Music |         10 | UCZG5t_SF6shnV3AhWqePjKA |            0 |            0 |    PT2M59S |     null |        62 | 2018-10-04T15:00:04Z |                                                      FREE Cannabeats - Adeptness | Freestyle Rap Doble Tempo Type Beat 2018 O.D Beats |      2361
+ 3bBlDIORQbQ |       People & Blogs |         22 | UCZLOnq-F5zhTWNUDjcEYByw |          944 |          410 |    PT7M45S |     null |     10549 | 2021-05-29T18:07:05Z |                                                                                  Harikan─▒n sinsi plan─▒ tuttu! - Karde┼ƒlerim 15. B├╢l├╝m |    660899
+ fowXc-klCYg |                Music |         10 | UCQsJi7L4_zXzYRN2X0Fw3Zg |         1034 |          922 |    PT4M17S |     null |     15861 | 2009-11-07T14:29:19Z |                                                                                                  Backstreet Boys Its True With Lyrics |   5679305
+ Y4wFblNoAyc |        Entertainment |         24 | UCe9JSDmyqNgA_l2BzGHq1Ug |          296 |          555 |   PT39M32S |     null |      6098 | 2021-06-10T15:00:16Z |                                                                               Teri Behisi - Episode 25 - 10th June 2021 - HAR PAL GEO |    574357
+ 4tRAuOLPHVI |                Music |         10 | UClXGtPUb3D0HeLUCUCm9Now |            1 |            0 |     PT3M3S |     null |         4 | 2021-06-11T04:00:01Z |                                                                                      Otis Kane Chloe Angelides - Fell Into It (Audio) |        53
+ Shnd6Khpuao |        Entertainment |         24 | UC48h7Dst_hX82HxOf3xJw_w |            6 |           11 |    PT2M17S |       th |       103 | 2021-05-27T13:15:02Z |                                                               FIN | α╣äα╕íα╣êα╣Çα╕¢α╣çα╕Öα╕äα╕╕α╕ôα╕½α╕Öα╕╣α╣Çα╕½α╕íα╕╖α╕¡α╕Öα╕òα╕¡α╕Öα╣üα╕úα╕üα╕ùα╕╡α╣êα╣Çα╕êα╕¡α╕üα╕▒α╕Ö | α╕¢α╕▓α╕Åα╕┤α╕½α╕▓α╕úα╕┤α╕óα╣îα╕úα╕▒α╕üα╕éα╣ëα╕▓α╕íα╕éα╕¡α╕Üα╕ƒα╣ëα╕▓ EP.6 | Ch3Thailand |     12731
+ oyEpH5fxBy4 |               Gaming |         20 | UC-2Y8dQb0S6DtpxNgAKoJKA |         5217 |         1538 |    PT1M21S |       en |     33735 | 2021-04-24T18:00:23Z |                                                                                                                  Stunning Games | PS5 |    589997
+ _YHwAWM1FBg |      News & Politics |         25 | UCwqusr8YDwM-3mEYTDeJHzw |          158 |         null |     PT2M4S |       en |      null | 2021-06-05T11:48:46Z |                                            Vladimir Putin Has Prophetic Take On India-China Ties; Against Extra-Regional Interference |     19380
+ pIJyM4VPa4E |      News & Politics |         25 | UCPXTXMecYqnRKNdqdVOGSFg |            0 |         null |    PT8M10S |       en |      null | 2021-06-05T13:06:24Z |                                                                                 α░«α░¿ α░èα░░α▒ü α░«α░¿ α░ªα▒çα░╢α░é || Today Top News || 05 June 2021 - TV9 |      1929
+ wbVkMPANeaY |               Sports |         17 | UCqZQlzSHbVJrwrn5XvzrzcA |            3 |            1 |    PT3M58S |     null |        31 | 2021-06-02T03:43:47Z |                                      NHL Stanley Cup 2021 Second Round: Lightning vs. Canes | Game 2 EXTENDED HIGHLIGHTS | NBC Sports |      2793
+ RccM-IHH-sA |      News & Politics |         25 | UCaXkIU1QidjPwiAYu6GcHjg |          760 |          789 |    PT3M19S |     null |       820 | 2021-05-21T03:27:13Z |                                                                  What Made The Recent Conflict In Gaza Different And Unique From Past |     78619
+ _BG98e_w6d0 |               Gaming |         20 | UCKy1dAqELo0zrOtPkf0eTMw |           42 |           24 |     PT1M1S |     null |       778 | 2021-06-11T20:32:49Z |                                                                                  Unpacking - Official Trailer | Summer of Gaming 2021 |     20200
+ atcmhjYfzjM |      News & Politics |         25 | UCTZPwwg5VF8aB5GN5snPqwA |           99 |           25 |    PT2M23S |     null |      1329 | 2021-06-07T18:05:26Z |                                                                                      Mahur Mara┼ƒl─▒ya hesap soruyor! Mara┼ƒl─▒ 21. B├╢l├╝m |     90603
+ 0xN_99Plmsw |                Music |         10 | UCmlTCSARa2El9mAZxvTtljw |           91 |           23 |    PT3M30S |     null |      2699 | 2020-11-07T00:24:12Z |                                                                                                   train wreck (w/rain) - James Arthur |     97895
+ acaWAsFgB7Y |        Entertainment |         24 | UCYQPTeY3HOk0BprrGuCWCaA |           12 |            7 |   PT46M24S |    zh-CN |       220 | 2021-06-08T09:00:12Z | ENGSUBπÇÉΘçìσÉ»Σ╣ïµ₧üµ╡╖σÉ¼Θ¢╖τ¼¼Σ╕Çσ¡ú Reunion: The Sound of the Providence S1πÇæEP23 | ΘçìσÉ»µâèΘÖ⌐Σ╣ïµùà | µ£▒Σ╕ÇΘ╛Ö/µ»¢µÖôσ╜ñ/Φâíσå¢ | σåÆΘÖ⌐µé¼τûæτëç|Σ╝ÿΘà╖YOUKU |     16950
+ CgIwa1H9zgE |        Entertainment |         24 | UCTQVIXvcHrR9jYoJ6qaBAow |          579 |           31 |    PT3M24S |       ko |     13166 | 2021-06-01T05:00:03Z |                                                      MPD∞ºü∞║á TXT ∞êÿδ╣ê ∞ºü∞║á 4K No Rules (TXT SOOBIN FanCam) | @TXT COMEBACKSHOW FREEZE |     95305
+ KKoCh78plV8 |               Sports |         17 | UCHQUWveEpeO1KTkwbDn6jNA |            1 |            2 |  PT2H37M3S |     null |       104 | 2021-05-27T09:41:02Z |                                                                Relive Court 1 | Womens Pool Play - Round 1 | Full Day | 4* Sochi 2021 |     17280
+ NK3o6yJ9Hd0 |      News & Politics |         25 | UC9CYT9gSNLevX5ey2_6CK0Q |          203 |          151 |     PT5M3S |       hi |      2865 | 2021-05-16T06:15:46Z |                                                             Cyclone Tauktae: αññαñ╛αñòαññαñ╡αñ░ αñ╣αÑïαññαñ╛ Tauktae 175 αñòαñ┐αñ▓αÑïαñ«αÑÇαñƒαñ░ αñ¬αÑìαñ░αññαñ┐ αñÿαñéαñƒαÑç αñ╣αÑï αñ╕αñòαññαÑÇ αñ╣αÑê αñ░αñ½αÑìαññαñ╛αñ░ |    154432
+ 0mmCAPekIMM |       People & Blogs |         22 | UCcPVzEbEIv1GUl_c4owKuhg |          561 |           59 |    PT14M1S |       en |      5358 | 2019-07-13T12:30:00Z |                                                                                        UNEXPECTED Volleyball tournament in Darjeeling |    131382
+ Ljau_5OHzXA |      News & Politics |         25 | UCXoJ8kY9zpLBEz-8saaT3ew |           84 |            4 |    PT3M45S |       uk |       100 | 2021-05-28T17:00:18Z |                                                ╨¥╨╛╨▓╨╕╨╜╨╕ ╨ú╨║╤Ç╨░╤ù╨╜╨╕: ╤â ╨ö╨╜╤û╨┐╤Ç╤û ╨▓╨╕╤Ç╤û╤ê╤â╨▓╨░╨╗╨░╤ü╤Å ╨┤╨╛╨╗╤Å ╨┐╤û╨┤╨╛╨╖╤Ç╤Ä╨▓╨░╨╜╨╛╤ù ╤â ╨▓╨▒╨╕╨▓╤ü╤é╨▓╤û ╤ü╨┐╤û╨▓╨╝╨╡╤ê╨║╨░╨╜╤å╤Å-╤é╨╕╤Ç╨░╨╜╨░ |     10944
+ kPy6Kd6Mm_I |                Music |         10 | UCnc6db-y3IU7CkT_yeVXdVg |         5163 |          806 |    PT2M58S |     null |     95419 | 2021-05-14T04:00:17Z |                                                                          J. Cole - a p p l y i n g . p r e s s u r e (Official Audio) |   3694612
+ NxCBupV14sQ |      News & Politics |         25 | UCmRbHAgG2k2vDUvb3xsEunQ |            3 |            4 |   PT21M10S |     null |        31 | 2021-06-07T16:30:07Z |                                                        All Important Headlines Of Today At A Glance | India Business Hour | CNBC Tv18 |      1911
+ E24FosXqorU |        Entertainment |         24 | UCtBu8Wb2BUoduUXJS9Uss7Q |            0 |            2 |    PT8M11S |     null |        40 | 2021-05-25T14:00:07Z |                                                                                                             α╕áα╕╣α╕òα╕úα╕▒α╕òα╕òα╕┤α╕üα╕▓α╕Ñ EP.25 3/4 | α╕èα╣êα╕¡α╕ç8 |      6286
+ lFhBxAzanF0 |        Entertainment |         24 | UC48h7Dst_hX82HxOf3xJw_w |            0 |            2 |    PT2M18S |       th |        93 | 2021-05-31T13:15:01Z |                                                                   FIN | α╣äα╕íα╣êα╣Çα╕äα╕óα╕íα╕╡α╣âα╕äα╕úα╕úα╕▒α╕üα╕éα╣ëα╕▓α╣üα╕Üα╕Üα╕Öα╕╡α╣ëα╕íα╕▓α╕üα╣êα╕¡α╕Ö | α╕¢α╕▓α╕Åα╕┤α╕½α╕▓α╕úα╕┤α╕óα╣îα╕úα╕▒α╕üα╕éα╣ëα╕▓α╕íα╕éα╕¡α╕Üα╕ƒα╣ëα╕▓ EP.9 | Ch3Thailand |     11103
+ tT4Xhs1ZoyA |      News & Politics |         25 | UCahpxixMCwoANAftn6IxkTg |         null |           12 |      PT28S |       ar |       373 | 2021-06-02T13:34:36Z |                                                                                                                 ┘ä┘ê╪º╪í ╪Ñ╪╖┘ü╪º╪í ┘ä╪Ñ┘å┘é╪º╪░ ╪¿╪╖╪⌐ |     20121
+ o_w05kjdU5A |      News & Politics |         25 | UC5GvVahlgulCyo4cshSmbcg |          148 |           20 |       PT1M |     null |       711 | 2021-05-22T14:37:58Z |                                                                                                           ┘à┘å ╪º┘ä╪¼┘ê.. ╪¡╪¼┘à ╪º┘ä╪»┘à╪º╪▒ ┘ü┘è ╪║╪▓╪⌐ |     21659
+ Alhd62Ykzjw |               Gaming |         20 | UCp9TXGvv2-7JVVdyKEi0A6A |            0 |            0 |   PT33M15S |     null |         8 | 2021-06-11T02:46:09Z |                                                                                CohhCarnage Plays Chivalry 2 Full Release - Episode 16 |       306
+ W2vRQT_ymyg |            Education |         27 | UCuJ9YP_Hikt4IqITa6ZlxzQ |         null |         1966 |     PT2M8S |     null |      2697 | 2020-07-31T12:00:09Z |                                                                            Ice Cream Song | Mother Goose Club Cartoons #NurseryRhymes |   2254091
+ jW9RFfGnPjU |                Music |         10 | UCEPMVbUzImPl4p8k4LkGevA |           68 |           26 |     PT2M5S |     null |      1337 | 2014-10-06T11:04:35Z |                                                                     Queen - The Kiss (Aura Resurrects Flash) (Official Montage Video) |    126480
+ uFXy1hMaE9k |               Sports |         17 | UC9ckyA_A3MfXUa0ttxMoIZw |            1 |            0 | PT4H14M50S |     null |        78 | 2021-05-26T20:34:52Z |                                                                                WTT Youth S.Contender Tunis | Boys U15/19 T1 Session 3 |      6863
+ nsvDJ-1ZQ9w |                Music |         10 | UCLWS84TMi70xV2jAfAb-EpQ |           14 |           13 |    PT2M42S |     null |       367 | 2010-06-04T11:46:55Z |                                                                                                         ANOS 70 - MUSICA PRA RECORDAR |     60523
+ qsunFw7K2ng |                Music |         10 | UCEPMVbUzImPl4p8k4LkGevA |          508 |          125 |    PT4M29S |     null |      8593 | 2014-10-02T10:46:29Z |                                                                                         Queen - Rain Must Fall (Official Lyric Video) |    739901
+ lLmXJBebEjQ |                Music |         10 | UCQwTfHm6fu5KpBhp0wo8Uvw |         6021 |         1434 |    PT2M15S |     null |    184156 | 2021-05-21T15:00:18Z |                                                                                   MC Kevin - 1 Milh├úo de Sonhos (Prod.DJ Pedro Lotto) |   3124777
+ U6-IAfKIm4E |                Music |         10 | UC9vrvNSL3xcWGSkV86REBSg |          886 |          145 |    PT3M47S |     null |     30520 | 2015-10-22T00:16:18Z |                                                                       BTS (δ░⌐φâä∞åîδàäδï¿) ΓÇô 24/7 = Heaven Color coded Han|Rom|Eng lyrics |   2298878
+ dUyGEKRZB3A |            Education |         27 | UCLuBF4Xr1-BIpcpFFm7zp7w |         1977 |          758 |    PT1H39M |     null |     68429 | 2021-06-10T02:22:37Z |                                    10 June | Daily Current Affairs #571 | Rajya Darshan : Odisha | Hindi & English | Kumar Gaurav Sir |    557996
+ OxNhCYiOw34 |        Entertainment |         24 | UCtBu8Wb2BUoduUXJS9Uss7Q |            5 |            1 |   PT15M10S |     null |       202 | 2021-05-26T14:00:08Z |                                                                                                            α╣Çα╕₧α╕úα╕çα╕Ñα╕▒α╕Üα╣üα╕Ñ EP.28 1/4 | α╕èα╣êα╕¡α╕ç 8 |     17990
+ f0yRNXJ1Vm4 |      News & Politics |         25 | UCttspZesZIDEwwpVIgoZtWQ |            4 |            6 |      PT46S |    en-GB |        29 | 2021-06-08T06:17:01Z |                                                αñåαñ£ Amit Shah αñ╕αÑç αñ«αñ┐αñ▓αÑçαñéαñùαÑç Suvendu Adhikari αñ¼αñéαñùαñ╛αñ▓ αñ«αÑçαñé BJP αñ¿αÑçαññαñ╛αñôαñé αñòαÑÇ αñ╣αññαÑìαñ»αñ╛ αñöαñ░ αñ¬αñ╛αñ░αÑìαñƒαÑÇ αñ╕αñéαñùαñáαñ¿ αñ¬αñ░ αñ╣αÑïαñùαÑÇ αñ¼αñ╛αññ |      1686
+ DpAY1D_BQJc |        Entertainment |         24 | UCtpL6HyBK-z16GbJguHf3JQ |          116 |           37 |    PT5M23S |       ar |      1018 | 2021-05-15T20:27:28Z |                                                ╪│┘ç╪▒╪⌐ ╪«╪º╪╡╪⌐ | ┘à╪┤ ┘ç╪¬╪╡╪»┘é ╪▒╪º┘å┘è╪º ┘à╪¡┘à┘ê╪» ┘è╪º╪│┘è┘å ┘â╪º┘å╪¬ ┘à╪╡┘ê╪▒╪⌐ ╪ú╪║┘ä╪¿ ┘à╪┤╪º┘ç╪»┘ç╪º ┘ü┘è ┘à╪│┘ä╪│┘ä ╪º┘ä╪╖╪º┘ê┘ê╪│ ┘ü┘è┘å ≡ƒÿé |     71622
+ eOLJ7iMfg6M |               Sports |         17 | UCqQo7ewe87aYAe7ub5UqXMw |          166 |           13 |    PT7M20S |     null |       547 | 2021-05-29T22:31:30Z |                                   Denver Nuggets vs Portland Trail Blazers - Full Game 4 Highlights | May 29 2021 | 2021 NBA Playoffs |     40499
+ j5c6eS_M7i8 |        Entertainment |         24 | UCtBu8Wb2BUoduUXJS9Uss7Q |            0 |            5 |     PT7M9S |     null |       164 | 2021-05-28T16:00:25Z |                                                                                                            α╣Çα╕₧α╕úα╕çα╕Ñα╕▒α╕Üα╣üα╕Ñ EP.36 3/4 | α╕èα╣êα╕¡α╕ç 8 |     19659
+ vRTik9ib5Vw |      News & Politics |         25 | UCt4t-jeY85JegMlZ-E5UWtA |           30 |           51 |   PT14M31S |       hi |       332 | 2021-06-08T09:56:21Z |                                            Agra Hospital Mock Drill | America On Wuhan Lab | Joe Biden On Corona Inspection | Aaj Tak |     24267
+ MQ-EfTowcfk |      News & Politics |         25 | UCT4Jg8h03dD0iN3Pb5L0PMA |         null |           24 |    PT2M27S |     null |       343 | 2021-05-31T23:19:24Z |                                                                 Madres de un barrio de Cali luchan por un futuro mejor para sus hijos |      4799
+ 4Gn4DkwUY4Q |        Entertainment |         24 | UCGR1XmkoQedeJMT2ajRHvsw |           87 |           37 |    PT4M38S |       tr |      1877 | 2021-05-19T19:31:26Z |                                                                       ┼₧eyh Edebal─▒dan Osman Beye tavsiye... - Kurulu┼ƒ Osman 59. B├╢l├╝m |    116598
+ O9-kJB8AVFA |        Entertainment |         24 | UCWOA1ZGywLbqmigxE4Qlvuw |         1173 |          156 |    PT1M34S |     null |      9202 | 2021-05-20T14:00:00Z |                                                                                   Black Summer: Season 2 | Official Trailer | Netflix |    321345
+ 0NMaunRg7GU |      News & Politics |         25 | UCT4Jg8h03dD0iN3Pb5L0PMA |         null |            5 |    PT2M52S |   es-419 |         7 | 2021-05-11T22:49:51Z |                                                                                Duque viaja a Cali y anuncia subvenciones en educaci├│n |       477
+ kkhDlOszgoA |               Sports |         17 | UCsZsn_S93Zs8JOdKMRbklmg |            0 |            1 |    PT2M39S |     null |        14 | 2021-06-04T19:15:02Z |                                                              Backstories With Bailey: The Artistry That Drives 2011 Champ So Yeon Ryu |       777
+ LB6UqDsVaZI |      News & Politics |         25 | UCttspZesZIDEwwpVIgoZtWQ |           13 |           37 |    PT10M1S |    en-GB |       433 | 2021-05-18T09:43:12Z |                                                                        Gujarat: Visuals from Una after Cyclone Tauktae hit the region |     38260
+ UqfLVDIZcP8 |                Music |         10 | UCGdggAgIJE0pxADOUJtKfQg |        23392 |        14021 |    PT4M31S |     null |    377814 | 2009-06-17T05:30:02Z |                                                                                         Mariah Carey - Bye Bye (Official Music Video) | 102279398
+ WHdciMSmCOI |      News & Politics |         25 | UCaXkIU1QidjPwiAYu6GcHjg |         1132 |          190 |    PT7M56S |     null |      1931 | 2021-06-10T13:30:07Z |                                                                    Biden DOJ Made The Wrong Call In Trump Case Say Fmr. U.S. Attorney |     87409
+ YU0ln5261aA |      News & Politics |         25 | UCiwt1aanVMoPYUt_CQYCPQg |           31 |            4 |    PT9M40S |     null |       457 | 2021-05-21T05:39:46Z |                                        πÇÉσà¿τÉâτÅ╛σá┤µùÑσá▒πÇæΣ╗Ñσ╖┤21µùÑσçîµÖ¿Φ╡╖σü£τü½!  µûçσ£¿σ»àµè╡ΦÅ»σ║£! σé│τ╛ÄΘƒôσ░çτÖ╝Φü»σÉêΦü▓µÿÄµÅÉσÅ░τüú @Σ╕¡σñ⌐Θ¢╗Φªû 20210521 |     11351
+ KmcExFeHbSY | Science & Technology |         28 | UCvvQnhNxwMJyJZxuAljhgpw |           14 |            0 |      PT51S |       en |        15 | 2021-05-02T11:32:58Z |                                                                                                #short #BLUEFIX #Epoxy #user #products |      4005
+ T_eaP31BhtU |        Entertainment |         24 | UCl7cVzHngS0kg51TPrDbqlg |          174 |           82 |     PT5M8S |     null |      5820 | 2020-12-30T16:15:02Z |                                                                                    Edward Sharpe & The Magnetic Zeros - Home (Lyrics) |    226424
+ Q0GneFBThwA |        Entertainment |         24 | UC48h7Dst_hX82HxOf3xJw_w |           11 |           14 |    PT4M43S |       th |       456 | 2021-05-21T13:15:01Z |                                                                      FIN | α╕éα╣ëα╕▓α╕¡α╕┤α╣êα╕íα╕ùα╕┤α╕₧α╕óα╣îα╕êα╕░α╣Çα╕äα╕óα╕½α╕╕α╕çα╕éα╣ëα╕▓α╕ºα╕ùα╕╡α╣êα╣äα╕½α╕Ö | α╕¢α╕▓α╕Åα╕┤α╕½α╕▓α╕úα╕┤α╕óα╣îα╕úα╕▒α╕üα╣üα╕íα╣êα╣éα╕₧α╕¬α╕₧ EP.5 | Ch3Thailand |     46355
+ BzJV1w3tgJw |                Music |         10 | UCFE3VBwV7eGLdJcetJ4KZEQ |            1 |            0 |     PT3M9S |     null |         5 | 2020-04-15T13:51:45Z |                                                         FRANKIE AND JOHNNIE ANIKA NONI ROSE JAYNE MANSFIELD TRIBUTE (BEST HD QUALITY) |       342
+ gtawfcIhZBM |      News & Politics |         25 | UCmRbHAgG2k2vDUvb3xsEunQ |            0 |            0 |   PT24M59S |     null |         9 | 2021-06-04T02:00:15Z |                                                    All Important Headlines Of Yesterday At A Glance | India Business Hour | CNBC Tv18 |       486
+ d7SGDDeF0v8 |      News & Politics |         25 | UC4oQAvXFuNlKivYjUynQKTA |           18 |            1 |    PT1M11S |   es-419 |        39 | 2021-05-20T21:24:07Z |                                                                                                  No olviden a Sarita |Semana Noticias |      2013
+ xW2tcZ6_6tY |     Film & Animation |          1 | UCMwY5ruym-hu3TNA3XwSTZw |           28 |           44 |    PT3M38S |     null |       920 | 2021-06-03T19:18:12Z |                                                                                  G├╝lcihan─▒n Ka├ºak Fal Maceras─▒ | Camdaki K─▒z 8. B├╢l├╝m |    112427
+ zDaU6XYk8Uk |                Music |         10 | UCGfCYTrH0rvtSMfuwY9qxLQ |          341 |            8 |    PT4M28S |     null |      2687 | 2021-06-11T04:00:19Z |                                                                                                Pierre Bourne - 40 Clip Official Audio |     33047
+ YEQjemP-1VI |      News & Politics |         25 | UC4oQAvXFuNlKivYjUynQKTA |          268 |           91 | PT2H13M39S |   es-419 |       561 | 2021-05-28T16:38:53Z |                                                    Caso Uribe: Tribunal define qui├⌐nes ser├ín v├¡ctimas en el proceso | Semana Noticias |     53084
+ daL3DxBlSZ4 |                Music |         10 | UC6eq3sR4CtbvGdmInchzWUA |            0 |         null |   PT21M34S |     null |      null | 2021-05-28T08:10:53Z |                                                          Tr├▓ ch╞íi trß╗æn t├¼m c├┤ng ch├║a mß║Ñt t├¡ch - Phim HOß║áT H├îNH C├öNG CH├ÜA ORI - Tß║¡p 51 |     11063
+ ymECh8y9cJU |      News & Politics |         25 | UChDKyKQ59fYz3JO2fl0Z6sg |           67 |           12 |    PT8M17S |     null |       508 | 2021-05-23T14:51:50Z |                                                              Michael Douglas On ΓÇÿThe Kominsky MethodΓÇÖ Moving Out Of Dad KirkΓÇÖs Shadow |     31207
+ S9RPTnNc9R4 |      News & Politics |         25 | UCmRbHAgG2k2vDUvb3xsEunQ |            0 |            0 |    PT5M45S |     null |         0 | 2021-06-04T04:30:23Z |                                                              How Nifty Midcap Is Performing Today? | Bazaar Open Exchange | CNBC-TV18 |       145
+ PDFMf7bBCQc |      News & Politics |         25 | UCttspZesZIDEwwpVIgoZtWQ |            3 |            5 |    PT5M22S |    en-GB |        80 | 2021-05-17T14:11:49Z |                                                                        Fully prepared to tackle Tauktae says NDRF IG Amarendra Sengar |      6450
+ ZKGt23WHUU0 |               Gaming |         20 | UCJx5KP-pCUmL9eZUv-mIcNw |            3 |            0 |    PT1M41S |     null |        42 | 2021-06-10T20:38:18Z |                                                       Monster Hunter Stories 2: Wings of Ruin - Story Trailer | Summer Game Fest 2021 |      1204
+ y7WM-lZzZmk |                Music |         10 | UCE5yTn9ljzSnC_oMp9Jnckg |           51 |            6 |    PT2M18S |     null |       782 | 2021-05-21T04:00:16Z |                                                                                        P!NK - MTV Video Vanguard Award Speech (Audio) |     15735
+ -39LJh6e0Kg |      News & Politics |         25 | UCKonxxVHzDl55V7a9n_Nlgg |         null |         null |      PT42S |     null |      null | 2021-05-22T18:54:54Z |                                                                           ╨¥╨░ ╤Ä╨│╨╡ ╨Ü╤Ç╨░╤ü╨╜╨╛╤Å╤Ç╤ü╨║╨╛╨│╨╛ ╨║╤Ç╨░╤Å ╨╛╨▒╤è╤Å╨▓╨╗╨╡╨╜ ╤Ç╨╡╨╢╨╕╨╝ ╨º╨í ╨╕╨╖-╨╖╨░ ╨┐╨░╨▓╨╛╨┤╨║╨╛╨▓. |      2837
+ bFAMyg3q4TU |        Entertainment |         24 | UCGR1XmkoQedeJMT2ajRHvsw |          149 |           38 |    PT2M22S |       tr |      1742 | 2021-05-24T08:00:19Z |                                                                            Osman Beyin karar─▒ de─ƒi┼ƒecek mi? - Kurulu┼ƒ Osman 59. B├╢l├╝m |     61611
+ kzCg8L-B_8o |      News & Politics |         25 | UCZFMm1mMw0F81Z37aaEzTUA |           43 |           72 |    PT2M30S |    en-GB |       721 | 2021-05-16T20:01:45Z |                                                                                   Cyclone Tauktae Intensifies Into Very Severe StormΓÇÖ |    118361
+ __uU3azCaCg |      News & Politics |         25 | UCttspZesZIDEwwpVIgoZtWQ |            4 |            5 |    PT1M16S |    en-GB |       118 | 2021-06-04T02:38:30Z |                                                SC αñ¿αÑç CBSE/ICSE αñòαÑï 12αñ╡αÑÇαñé αñòαÑÇ αñ¼αÑïαñ░αÑìαñí αñ¬αñ░αÑÇαñòαÑìαñ╖αñ╛ αñòαÑÇ αñ«αÑéαñ▓αÑìαñ»αñ╛αñéαñòαñ¿ αñ¿αÑÇαññαñ┐ αññαñ» αñòαñ░αñ¿αÑç αñòαÑç αñ▓αñ┐αñÅ αñªαÑï αñ╕αñ¬αÑìαññαñ╛αñ╣ αñòαñ╛ αñ╕αñ«αñ» αñªαñ┐αñ»αñ╛ |      4880
+
+---MORE---
+
+##############################################################
+
+cqlsh:trial> select videoId, viewCount from trial_name where category='Gaming' LIMIT 10 ALLOW FILTERING;
+
+ videoid     | viewcount
+-------------+-----------
+ nYeONwvvrrg |     87743
+ oyEpH5fxBy4 |    589997
+ _BG98e_w6d0 |     20200
+ ZKGt23WHUU0 |      1204
+ WLLUKLhVl0E |    184444
+ CsbbESqOCzs |      2515
+ c0uf82rJnI8 |   2149855
+ WQDyvTUVaEY |     10167
+ XIyf-HfIak8 |   1973995
+ vEndFKJM-fo |   5093959
+
+(10 rows)
+cqlsh:trial> DELETE FROM trial_name where videoid='CsbbESqOCzs';
+cqlsh:trial> select videoId, viewCount from trial_name where category='Gaming' LIMIT 10 ALLOW FILTERING;
+
+ videoid     | viewcount
+-------------+-----------
+ nYeONwvvrrg |     87743
+ oyEpH5fxBy4 |    589997
+ _BG98e_w6d0 |     20200
+ ZKGt23WHUU0 |      1204
+ WLLUKLhVl0E |    184444
+ c0uf82rJnI8 |   2149855
+ WQDyvTUVaEY |     10167
+ XIyf-HfIak8 |   1973995
+ vEndFKJM-fo |   5093959
+ g0-QnBH5Jwo |     82347
+
+(10 rows)
+cqlsh:trial>
+
+################################################################
+
+
+cqlsh:trial> select title,videoId,max(likeCount) from trial_name;
+
+ title                                                                           | videoid     | system.max(likecount)
+---------------------------------------------------------------------------------+-------------+-----------------------
+ Duque viajar├í nuevamente a Cali para reunirse con los j├│venes | Semana Noticias | 4sRefGQPxkQ |              28793939
+
+(1 rows)
+
+
+cqlsh:trial> select min(likeCount) from trial_name;
+
+ system.min(likecount)
+-----------------------
+                     0

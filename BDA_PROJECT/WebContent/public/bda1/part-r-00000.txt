@@ -1,0 +1,15 @@
+"Autos & Vehicles"	1923
+"Comedy"	318
+"Education"	1885
+"Entertainment"	3592
+"Film & Animation"	4025
+"Gaming"	6596
+"Howto & Style"	729
+"Music"	8705
+"News & Politics"	2741
+"Nonprofits & Activism"	1096
+"People & Blogs"	2856
+"Pets & Animals"	30
+"Science & Technology"	2121
+"Sports"	1966
+"Travel & Events"	301

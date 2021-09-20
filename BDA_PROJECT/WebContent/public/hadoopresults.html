@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+
+<html>
+	<head>
+		<title>Hadoop MapReduce Results</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> 
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="http://localhost:8080/socket.io/socket.io.js"></script>
+		<script src ="assets/js/getdatahelper.js"></script>
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>YouTube Data Analysis</strong> </a>
+									
+								</header>
+
+							<!-- Content -->
+								<section>
+									<header class="main">
+										<h1>Hadoop MapReduce Results</h1>
+									</header>
+
+									<!-- Content -->
+										
+												<div style="display: inline;">
+													<h2 id="content" style="display: inline-block;">Category-wise count of Videos</h2>
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;
+													&nbsp;&nbsp;&nbsp;&nbsp;
+													<h2 id="content" style="display: inline-block;">Video Upload Count per Channel</h2>
+                                                    <div style="display: inline-block;">
+														&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+														
+                                                        <embed type="text/html" src="bda1/part-r-00000.txt"  width="500" height="300">
+                                                    </div>
+													<div style="display: inline;">
+														
+                                                        <embed type="text/html" src="bda3/part-r-00000.txt"  width="500" height="300">
+                                                    </div>
+												</div>
+												<br>
+												<br>
+												<br>
+												<div style="text-align: center;">
+													<h2 id="content">View Count Per Video</h2>
+													<embed type="text/html" src="bda2/part-r-00000.txt"  width="800" height="300">
+												</div>
+						
+
+									
+
+											</div>
+										</div>
+
+								</section>
+
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+
+
+							<!-- Menu -->
+								<nav id="menu">
+									<header class="major">
+										<h2>Menu</h2>
+									</header>
+									<ul>
+										<li><a href="index.html">Homepage</a></li>
+										<li><a href="stats.html">Visualizations</a></li>
+										<li><a href="getdata.html">Get More Data</a></li>
+										<li><a href="hadoopresults.html">Hadoop MapReduce Results</a></li>
+										
+										
+									</ul>
+								</nav>
+
+		
+
+						
+								
+							
+
+						</div>
+					</div>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/skel.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>
